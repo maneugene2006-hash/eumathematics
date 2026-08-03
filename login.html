@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="rw">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login - Learn Math</title>
+
+
+<style>
+
+body{
+
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#007BFF,#c300ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+
+}
+
+
+
+.sidebar{
+
+    width:230px;
+    height:100vh;
+    background:linear-gradient(135deg,#007BFF,#c300ff);
+    position:fixed;
+    left:0;
+    top:0;
+    padding:20px;
+
+}
+
+
+
+.sidebar h2{
+
+    color:white;
+    text-align:center;
+    margin-bottom:30px;
+
+}
+
+
+
+.sidebar a{
+
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    margin:10px 0;
+    border-radius:8px;
+
+}
+
+
+
+.sidebar a:hover{
+
+    background:rgba(255,255,255,0.3);
+
+}
+
+
+
+.container{
+
+    background:greenyellow;
+    padding:30px;
+    width:350px;
+    border-radius:12px;
+    box-shadow:0 0 10px black;
+
+}
+
+
+
+h2{
+
+    text-align:center;
+    color:#007BFF;
+
+}
+
+
+
+input{
+
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-sizing:border-box;
+
+}
+
+
+
+button{
+
+    width:100%;
+    padding:12px;
+    background:#007BFF;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+    background:#0056b3;
+
+}
+
+
+
+p{
+
+    text-align:center;
+
+}
+
+
+
+a{
+
+    color:#007BFF;
+    text-decoration:none;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="sidebar">
+
+
+<h2>Learn Math</h2>
+
+
+
+<a href="#" onclick="openPage('dashboard.html')">
+🏠 Dashboard
+</a>
+
+
+
+<a href="#" onclick="openPage('lessons.html')">
+📚 Lessons
+</a>
+
+
+
+<a href="#" onclick="openPage('quiz.html')">
+📝 Quiz
+</a>
+
+
+
+<a href="#" onclick="openPage('profile.html')">
+👤 Profile
+</a>
+
+
+
+<a href="logout.html">
+🚪 Logout
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="container">
+
+
+<h2>Login</h2>
+
+
+
+<form onsubmit="login(event)">
+
+
+
+<input 
+type="email"
+id="email"
+placeholder="Insert your email"
+required>
+
+
+
+
+<input
+type="password"
+id="password"
+placeholder="Insert 5 digit password"
+maxlength="5"
+required>
+
+
+
+
+<button type="submit">
+
+Login
+
+</button>
+
+
+
+</form>
+
+
+
+
+<p>
+
+Don't have an account?
+
+<a href="index.html">
+
+Register here
+
+</a>
+
+
+</p>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+
+
+function login(event){
+
+
+event.preventDefault();
+
+
+
+
+let email =
+document.getElementById("email").value;
+
+
+
+let password =
+document.getElementById("password").value;
+
+
+
+
+
+let savedEmail =
+localStorage.getItem("email");
+
+
+
+let savedPassword =
+localStorage.getItem("password");
+
+
+
+
+
+if(email === savedEmail && password === savedPassword){
+
+
+
+localStorage.setItem("loggedIn","true");
+
+
+
+alert("Login successful");
+
+
+
+window.location.href="dashboard.html";
+
+
+
+}
+
+else{
+
+
+alert("Wrong email or password. Please register first");
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+function openPage(page){
+
+
+let loggedIn =
+localStorage.getItem("loggedIn");
+
+
+
+if(loggedIn === "true"){
+
+
+window.location.href=page;
+
+
+}
+
+else{
+
+
+alert("Please login first");
+
+
+}
+
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
