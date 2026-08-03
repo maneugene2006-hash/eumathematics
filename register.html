@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="rw">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Choose the Level</title>
+
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#884e7b;
+}
+
+
+
+.sidebar{
+
+    width:230px;
+    height:100vh;
+    background:linear-gradient(135deg,#007BFF,#c300ff);
+    position:fixed;
+    left:0;
+    top:0;
+    padding:20px;
+
+}
+
+
+
+.sidebar h2{
+
+    color:white;
+    text-align:center;
+    margin-bottom:30px;
+
+}
+
+
+
+.sidebar a{
+
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    margin:10px 0;
+    border-radius:8px;
+
+}
+
+
+
+.sidebar a:hover{
+
+    background:rgba(255,255,255,0.3);
+
+}
+
+
+
+
+.box{
+
+    position:absolute;
+    top:50%;
+    left:calc(50% + 115px);
+    transform:translate(-50%,-50%);
+
+    background:goldenrod;
+
+    padding:30px;
+
+    width:350px;
+
+    border-radius:10px;
+
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+
+}
+
+
+
+h2{
+
+    text-align:center;
+
+    color:#007BFF;
+
+}
+
+
+
+select,button{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:15px;
+
+    border-radius:6px;
+
+}
+
+
+
+button{
+
+    background:#007BFF;
+
+    color:white;
+
+    border:none;
+
+    cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+    background:#0056b3;
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<script>
+
+
+// Kurinda page
+
+let loggedIn = localStorage.getItem("loggedIn");
+
+
+if(loggedIn !== "true"){
+
+
+    alert("Please login first");
+
+
+    window.location.href="login.html";
+
+
+}
+
+
+</script>
+
+
+
+
+
+<div class="sidebar">
+
+
+<h2>Learn Math</h2>
+
+
+
+<a href="dashboard.html">🏠 Dashboard</a>
+
+<a href="lessons.html">📚 Lessons</a>
+
+<a href="quiz.html">📝 Quiz</a>
+
+<a href="profile.html">👤 Profile</a>
+
+<a href="logout.html">🚪 Logout</a>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="box">
+
+
+<h2>Choose the Level</h2>
+
+
+
+
+<select id="level">
+
+
+<option value="">
+-- choose your level --
+</option>
+
+
+
+<option value="Primary">
+Primary
+</option>
+
+
+<option value="O-Level">
+O-Level
+</option>
+
+
+<option value="A-Level">
+A-Level
+</option>
+
+
+<option value="University">
+University
+</option>
+
+
+</select>
+
+
+
+
+<button onclick="goToSubject()">
+
+Continue
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+function goToSubject(){
+
+
+
+let level =
+document.getElementById("level").value;
+
+
+
+
+
+if(level === ""){
+
+
+alert("Please choose your level first");
+
+
+return;
+
+
+}
+
+
+
+
+localStorage.setItem("level",level);
+
+
+
+window.location.href="subject.html";
+
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

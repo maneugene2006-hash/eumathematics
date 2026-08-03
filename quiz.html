@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="rw">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mathematics Quiz</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#884e7b;
+}
+
+
+.container{
+
+    width:700px;
+    margin:30px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 15px black;
+
+}
+
+
+h1{
+
+    text-align:center;
+    color:#007BFF;
+
+}
+
+
+h2{
+
+    color:#c300ff;
+    border-bottom:2px solid #ccc;
+    padding-bottom:10px;
+
+}
+
+
+.question{
+
+    background:#f2f2f2;
+    padding:15px;
+    margin:15px 0;
+    border-radius:10px;
+
+}
+
+
+button{
+
+    width:100%;
+    padding:15px;
+    background:#007BFF;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+
+}
+
+
+button:hover{
+
+    background:#0056b3;
+
+}
+
+
+#result{
+
+    text-align:center;
+    font-size:25px;
+    color:green;
+    margin-top:20px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>Mathematics Quiz</h1>
+
+
+<form id="quizForm">
+
+
+<h2>Sets (10 Questions)</h2>
+
+<div id="sets"></div>
+
+
+<h2>Logic (10 Questions)</h2>
+
+<div id="logic"></div>
+
+
+<h2>Functions (10 Questions)</h2>
+
+<div id="functions"></div>
+
+
+<h2>Linear Algebra (10 Questions)</h2>
+
+<div id="algebra"></div>
+
+
+<button type="button" onclick="checkAnswer()">
+Submit Quiz
+</button>
+
+
+</form>
+
+
+<h2 id="result"></h2>
+
+
+</div>
+
+
+
+<script>
+
+
+let questions=[
+
+
+// SETS
+
+{
+q:"1. A={1,2,3}. Number of elements?",
+a:["2","3","4"],
+c:"3",
+type:"sets"
+},
+
+{
+q:"2. Empty set is represented by?",
+a:["{}","1","∞"],
+c:"{}",
+type:"sets"
+},
+
+
+{
+q:"3. Union symbol is?",
+a:["∪","×","="],
+c:"∪",
+type:"sets"
+},
+
+
+{
+q:"4. Intersection symbol is?",
+a:["∩","÷","+"],
+c:"∩",
+type:"sets"
+},
+
+
+{
+q:"5. Set containing all objects is?",
+a:["Universal set","Empty set","Small set"],
+c:"Universal set",
+type:"sets"
+},
+
+
+// LOGIC
+
+{
+q:"6. TRUE + TRUE in logic gives?",
+a:["TRUE","FALSE","ZERO"],
+c:"TRUE",
+type:"logic"
+},
+
+{
+q:"7. AND operator symbol?",
+a:["∧","∨","="],
+c:"∧",
+type:"logic"
+},
+
+
+{
+q:"8. OR operator symbol?",
+a:["∨","∧","+"],
+c:"∨",
+type:"logic"
+},
+
+
+// FUNCTIONS
+
+{
+q:"9. f(x)=2x. f(3)=?",
+a:["5","6","8"],
+c:"6",
+type:"functions"
+},
+
+{
+q:"10. Function maps input to?",
+a:["Output","Number only","Nothing"],
+c:"Output",
+type:"functions"
+},
+
+
+// LINEAR ALGEBRA
+
+{
+q:"11. Matrix belongs to?",
+a:["Linear Algebra","Geometry","Statistics"],
+c:"Linear Algebra",
+type:"algebra"
+},
+
+
+{
+q:"12. Identity matrix has diagonal?",
+a:["1","0","2"],
+c:"1",
+type:"algebra"
+}
+
+
+];
+
+
+
+// Kwerekana ibibazo
+
+let count=0;
+
+
+questions.forEach((item)=>{
+
+
+let html=`
+
+<div class="question">
+
+<b>${item.q}</b><br><br>
+
+
+${item.a.map(answer=>`
+
+<label>
+
+<input type="radio" 
+name="q${count}" 
+value="${answer}">
+
+${answer}
+
+</label><br>
+
+
+`).join("")}
+
+
+</div>
+
+
+`;
+
+
+document.getElementById(item.type).innerHTML += html;
+
+
+count++;
+
+
+});
+
+
+
+
+// Kubara amanota
+
+function checkAnswer(){
+
+
+let score=0;
+
+
+questions.forEach((item,index)=>{
+
+
+let answer=document.querySelector(
+'input[name="q'+index+'"]:checked'
+);
+
+
+if(answer && answer.value==item.c){
+
+score++;
+
+}
+
+
+});
+
+
+
+document.getElementById("result").innerHTML=
+
+"Your Score is: "+score+" / "+questions.length;
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
