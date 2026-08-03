@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="rw">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Logout</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+body{
+
+    background:linear-gradient(135deg,#007BFF,#c300ff);
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.container{
+
+    background:white;
+
+    width:350px;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 0 20px black;
+
+}
+
+
+
+h2{
+
+    text-align:center;
+
+    color:#007BFF;
+
+    margin-bottom:20px;
+
+}
+
+
+
+input{
+
+    width:100%;
+
+    padding:12px;
+
+    margin:10px 0;
+
+    border:1px solid gray;
+
+    border-radius:6px;
+
+}
+
+
+
+button{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:15px;
+
+    background:#007BFF;
+
+    color:white;
+
+    border:none;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+    background:#0056b3;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+
+<div class="container">
+
+
+
+<h2>Confirm Logout</h2>
+
+
+
+
+<input 
+type="email"
+id="email"
+placeholder="Enter your email"
+required>
+
+
+
+
+<input
+type="password"
+id="password"
+placeholder="Enter your password"
+maxlength="5"
+required>
+
+
+
+
+
+<button onclick="logout()">
+
+Logout
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+
+
+function logout(){
+
+
+
+let email =
+document.getElementById("email").value;
+
+
+
+let password =
+document.getElementById("password").value;
+
+
+
+
+
+let savedEmail =
+localStorage.getItem("email");
+
+
+
+let savedPassword =
+localStorage.getItem("password");
+
+
+
+
+
+
+if(email === savedEmail && password === savedPassword){
+
+
+
+// gusiba login gusa
+
+localStorage.removeItem("loggedIn");
+
+
+
+// gusiba amakuru ya profile kugira index itangire ubusa
+
+localStorage.removeItem("names");
+
+localStorage.removeItem("email");
+
+localStorage.removeItem("password");
+
+
+
+// kujya kuri index
+
+window.location.href="index.html";
+
+
+
+}
+
+
+
+else{
+
+
+alert("Email cyangwa password ntabwo ari byo");
+
+
+}
+
+
+
+}
+
+
+
+</script>
+
+
+
+
+</body>
+
+</html>
