@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="rw">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile Register - Learn Mathematics Online</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+body{
+
+    background:linear-gradient(135deg,#007BFF,#c300ff);
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.container{
+
+    background:white;
+
+    width:350px;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 0 20px black;
+
+}
+
+
+
+h2{
+
+    text-align:center;
+
+    color:#007BFF;
+
+    margin-bottom:20px;
+
+}
+
+
+
+input{
+
+    width:100%;
+
+    padding:12px;
+
+    margin:8px 0;
+
+    border:1px solid gray;
+
+    border-radius:6px;
+
+    font-size:15px;
+
+}
+
+
+
+button{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:15px;
+
+    background:#007BFF;
+
+    color:white;
+
+    border:none;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+
+button:hover{
+
+    background:#0056b3;
+
+}
+
+
+
+.message{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    color:green;
+
+    font-weight:bold;
+
+}
+
+
+
+a{
+
+    display:block;
+
+    text-align:center;
+
+    margin-top:15px;
+
+    color:#007BFF;
+
+    text-decoration:none;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="container">
+
+
+
+<h2>Create Profile</h2>
+
+
+
+<form id="profileForm">
+
+
+
+<input 
+type="text"
+id="names"
+placeholder="Enter your names"
+required>
+
+
+
+<input
+type="email"
+id="email"
+placeholder="Enter your email"
+required>
+
+
+
+<input
+type="password"
+id="password"
+placeholder="Enter 5 digit password"
+maxlength="5"
+required>
+
+
+
+<input
+type="password"
+id="confirm"
+placeholder="Confirm password"
+maxlength="5"
+required>
+
+
+
+
+<button type="submit">
+
+Save Profile
+
+</button>
+
+
+
+</form>
+
+
+
+
+<p class="message" id="message"></p>
+
+
+
+<a href="login.html">
+
+Go to Login
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+
+
+document
+.getElementById("profileForm")
+.addEventListener("submit",function(e){
+
+
+
+e.preventDefault();
+
+
+
+
+let names =
+document.getElementById("names").value;
+
+
+
+let email =
+document.getElementById("email").value;
+
+
+
+let password =
+document.getElementById("password").value;
+
+
+
+let confirm =
+document.getElementById("confirm").value;
+
+
+
+
+
+if(password !== confirm){
+
+
+alert("Password ntabwo zihuye");
+
+
+return;
+
+
+}
+
+
+
+
+
+if(password.length !== 5){
+
+
+alert("Password igomba kuba imibare 5");
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+// Kubika amakuru ya user
+
+
+localStorage.setItem("names", names);
+
+localStorage.setItem("email", email);
+
+localStorage.setItem("password", password);
+
+
+
+
+// Umuntu mushya agomba kongera gukora login
+
+
+localStorage.removeItem("loggedIn");
+
+
+
+
+
+document.getElementById("message").innerHTML =
+
+"Profile saved successfully!";
+
+
+
+
+
+setTimeout(function(){
+
+
+window.location.href="login.html";
+
+
+},1500);
+
+
+
+
+});
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
